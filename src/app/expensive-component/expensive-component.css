@@ -1,0 +1,126 @@
+/* Make PrimeNG tree feel like Material */
+:host ::ng-deep .p-tree {
+  border: none;
+  padding: 0;
+}
+
+/* folder row */
+.mat-folder-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 8px;
+  border-radius: 8px;
+  transition: background 0.12s ease;
+}
+.mat-folder-row:hover {
+  background: rgba(0,0,0,0.04);
+}
+.mat-folder-icon {
+  font-size: 18px;
+  color: rgba(0,0,0,0.55);
+}
+.mat-folder-text { display: flex; flex-direction: column; }
+.mat-folder-title { font-weight: 600; font-size: 14px; }
+.mat-folder-meta { font-size: 12px; color: rgba(0,0,0,0.6); }
+
+/* leaf "mat-card" */
+.mat-leaf-card {
+  width: 420px;          /* match your material width feeling */
+  max-width: 100%;
+  margin: 10px 0;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* header */
+.mat-leaf-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+}
+
+.mat-avatar img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #f4f4f4;
+}
+
+.mat-leaf-head-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.mat-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.88);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-sub {
+  font-size: 12px;
+  color: rgba(0,0,0,0.6);
+}
+
+/* main image */
+.mat-leaf-image img {
+  width: 100%;
+  height: 220px;      /* similar to your example */
+  object-fit: cover;
+  background: #f6f7f9;
+}
+
+/* content */
+.mat-leaf-content {
+  padding: 12px;
+}
+.mat-desc {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(0,0,0,0.72);
+  line-height: 1.4;
+}
+
+/* actions */
+.mat-leaf-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding: 12px;
+}
+
+/* material-like buttons */
+.mat-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.mat-stroked {
+  background: transparent;
+  color: #1976d2;
+  border-color: rgba(25,118,210,0.2);
+}
+
+.mat-flat {
+  background: #1976d2;
+  color: #fff;
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .mat-leaf-card { width: 100%; }
+  .mat-leaf-actions { justify-content: center; flex-wrap: wrap; }
+}

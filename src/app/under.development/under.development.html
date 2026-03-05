@@ -1,0 +1,57 @@
+<!-- under-development.html -->
+<div class="ud-shell" role="main" aria-labelledby="ud-title">
+  <div class="ud-card-wrap">
+    <article class="ud-card" aria-live="polite">
+      <div class="ud-visual" aria-hidden="true">
+        <!-- Simple inline rocket SVG -->
+        <svg class="ud-rocket" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" focusable="false">
+          <g transform="translate(8,4)">
+            <path class="body" d="M24 0c-5 0-12 7-14 17C6 26 2 30 0 32c2 2 6 6 15 4 10-2 20-3 26-9 6-6 6-16 0-22C36 1 30 0 24 0z"/>
+            <circle class="window" cx="20" cy="12" r="4"/>
+            <g class="flame">
+              <path d="M6 34c3 3 9 5 14 3 1 2 4 6 6 8 0 0-7 2-14-1-7-3-6-10-6-10z"/>
+            </g>
+          </g>
+        </svg>
+
+        <!-- CSS spinner -->
+        <div class="ud-spinner" role="status" aria-hidden="true">
+          <span class="visually-hidden">Loading</span>
+        </div>
+      </div>
+
+      <div class="ud-content">
+        <h1 id="ud-title">This page is under development</h1>
+        <p class="ud-lead">
+          We're building something awesome here. Hang tight — this feature will be ready soon.
+        </p>
+
+        <p class="ud-meta">
+          <strong>Estimated launch:</strong> Q2 2026
+        </p>
+
+        <div class="ud-actions">a
+          <a class="btn btn-primary" href="/">Go home</a>
+          <a class="btn btn-outline" href="mailto:support@yourdomain.com">Contact support</a>
+        </div>
+
+        <form class="ud-notify" onsubmit="event.preventDefault(); alert('Notify request (placeholder)');">
+          <label class="notify-label" for="notify-email">Notify me</label>
+          <div class="notify-row">
+            <input id="notify-email" class="notify-input" type="email" placeholder="your@email.com" />
+            <button class="btn btn-accent" type="submit">Notify me</button>
+          </div>
+        </form>
+
+        <p class="ud-help">If you need immediate access, please contact support or use the main menu.</p>
+      </div>
+    </article>
+
+    <footer class="ud-footer" aria-hidden="true">
+      <span>© <span id="ud-year"></span> Your Company</span>
+      <span class="sep">•</span>
+      <a href="/status">System status</a>
+    </footer>
+  </div>
+</div>
+

@@ -1,0 +1,135 @@
+<div class="card">
+
+    <!-- gallery -->
+    <!-- <p-galleria [value]="images()" [responsiveOptions]="responsiveOptions"
+        [containerStyle]="{ 'max-width': '640px', 'margin-boTtom': '40px' }" [numVisible]="5">
+        <ng-template #item let-item>
+            <img [src]="item.itemImageSrc" style="width:100%" />
+        </ng-template>
+        <ng-template #thumbnail let-item>
+            <img [src]="item.thumbnailImageSrc" />
+        </ng-template>
+    </p-galleria> -->
+
+    <!-- tree table -->
+    <!-- <p-treetable [value]="files" [scrollable]="true" [tableStyle]="{ 'min-width': '50rem', 'margin-bottom': '40px' }">
+        <ng-template #header>
+            <tr>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Type</th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-rowNode let-rowData="rowData">
+            <tr [ttRow]="rowNode">
+                <td>
+                    <div class="flex items-center gap-2">
+                        <p-treetable-toggler [rowNode]="rowNode" />
+                        <span>{{ rowData.name }}</span>
+                    </div>
+                </td>
+                <td>{{ rowData.size }}</td>
+                <td>{{ rowData.type }}</td>
+            </tr>
+        </ng-template>
+    </p-treetable> -->
+
+    <div class="card">
+        <p-tree [value]="files" class="w-full" [pt]="pt">
+            <ng-template pTemplate="default" let-node>
+                <!-- FOLDER NODE (expandable row) -->
+                <ng-container *ngIf="node.children?.length; else leafCard">
+                    <div class="mat-folder-row">
+                        <!-- <i class="pi" [ngClass]="node.expanded ? 'pi-chevron-down' : 'pi-chevron-right'" style="margin-top: 20px;"> -->
+                        <!-- </i> -->
+                        <i class="pi pi-fw pi-folder mat-folder-icon"></i>
+                        <div class="mat-folder-text">
+                            <div class="mat-folder-title">{{ node.label }}</div>
+                            <div class="mat-folder-meta">
+                                {{ node.data?.type }} • {{ node.data?.size }}
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <!-- LEAF NODE (Material-like card) -->
+                <ng-template #leafCard>
+                    <div class="mb-4 p-8 flex items-center justify-center">
+                        <p-card [style]="{ width: '25rem', overflow: 'hidden' }">
+                            <ng-template #header>
+                                <img alt="Card" class="w-full"
+                                    [src]="node?.data?.image" />
+                            </ng-template>
+                            <ng-template #title>{{ node?.data?.name }}</ng-template>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur
+                                error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis,
+                                culpa ratione quam perferendis esse, cupiditate neque
+                                quas!
+                            </p>
+                            <ng-template #footer>
+                                <div class="flex gap-4 mt-1">
+                                    <p-button label="View Details" severity="secondary" class="w-full" [outlined]="true"
+                                        styleClass="w-full" (onClick)="viewDetails(node)" />
+                                </div>
+                            </ng-template>
+                        </p-card>
+                    </div>
+                    <!-- <div class="mat-leaf-card"> -->
+                    <!-- <div class="mat-leaf-header">
+                            <div class="mat-avatar">
+                                <img [src]="node.data?.image" (error)="onImageError($event)" alt="" />
+                            </div>
+                            <div class="mat-leaf-head-text">
+                                <div class="mat-title">{{ node.label }}</div>
+                                <div class="mat-sub">{{ node.data?.type }} • {{ node.data?.size }}</div>
+                            </div>
+                        </div> -->
+
+                    <!-- <div class="mat-leaf-image" *ngIf="node.data?.image">
+                            <img [src]="node.data?.image" (error)="onImageError($event)" alt="" />
+                        </div> -->
+
+                    <!-- <div class="mat-leaf-content"> -->
+                    <!-- <p class="mat-desc">
+                                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
+                                Japan...
+                                (you can replace this with your node description if you have it)
+                            </p> -->
+                    <!-- </div> -->
+
+                    <!-- <div class="mat-leaf-actions"> -->
+                    <!-- <button class="mat-btn mat-flat" (click)="viewDetails(node); $event.stopPropagation()">
+                                View Details
+                            </button> -->
+                    <!-- </div> -->
+                    <!-- </div> -->
+                </ng-template>
+            </ng-template>
+        </p-tree>
+    </div>
+
+
+    <!-- grid table -->
+    <div class="card">
+        <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template #header>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-product>
+                <tr>
+                    <td>{{ product.code }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.quantity }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+</div>
