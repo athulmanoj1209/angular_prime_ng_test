@@ -21,7 +21,7 @@
   color: rgba(0,0,0,0.55);
 }
 .mat-folder-text { display: flex; flex-direction: column; }
-.mat-folder-title { font-weight: 600; font-size: 14px; }
+.mat-folder-title { font-weight: 600; font-size: 14px; margin-top: 15px; }
 .mat-folder-meta { font-size: 12px; color: rgba(0,0,0,0.6); }
 
 /* leaf "mat-card" */
@@ -117,6 +117,20 @@
 .mat-flat {
   background: #1976d2;
   color: #fff;
+}
+
+:host ::ng-deep .p-tree .p-treenode-content {
+  display: flex;
+  align-items: center !important;
+  padding: 0 !important; /* remove default Prime padding */
+}
+
+:host ::ng-deep .p-tree .p-tree-toggler {
+  align-self: center !important;
+}
+
+:host ::ng-deep .p-tree .p-treenode-content .p-tree-node-label {
+  margin-top: 12px;
 }
 
 /* mobile */

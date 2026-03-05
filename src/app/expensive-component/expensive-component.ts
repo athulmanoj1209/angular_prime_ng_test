@@ -90,10 +90,8 @@ export class ExpensiveComponent {
   }
 
   pt = {
-    nodeToggleButton: {
-      class: {
-        marginTop: '20px',
-      } as Partial<CSSStyleDeclaration>
+    nodeLabel: {
+      class: "ml-[-23px]"
     } 
   }
 
