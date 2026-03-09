@@ -8,5 +8,9 @@ export const routes: Routes = [
     {
         path: 'under-develop',
         loadComponent: () => import('./under.development/under.development').then(com => com.UnderDevelopment)
+    },
+    {
+        path: 'auditor-details/:id',
+        loadComponent: () => import('./auditorprofile/auditorprofile').then(com => com.Auditorprofile)
     }
 ];

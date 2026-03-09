@@ -1,0 +1,48 @@
+<!-- PrimeNG p-card version -->
+<div *ngIf="auditorInfo$ | async as aud" class="auditor-wrapper">
+    <div class="mb-4 p-8">
+        <p-card class="auditor-card">
+            <!-- Header: avatar + title + subtitle -->
+            <ng-template pTemplate="header">
+                <div class="card-header">
+                    <p-avatar *ngIf="aud.image" [image]="'http://localhost:5250/uploads/' + aud.image" shape="square"
+                        styleClass="avatar-img"></p-avatar>
+
+                    <div class="header-text">
+                        <div class="card-title">{{ aud.auditNode?.data?.name }}</div>
+                        <div class="card-subtitle">{{ aud.type }}</div>
+                    </div>
+                </div>
+            </ng-template>
+
+            <!-- Main image (large) -->
+            <img *ngIf="aud.image" class="card-main-image" [src]="'http://localhost:5250/uploads/' + aud.image"
+                [alt]="aud.auditNode?.data?.name + ' photo'" style="object-fit: fill;" />
+
+            <!-- Content -->
+            <ng-template pTemplate="content">
+                <div class="meta">
+                    <p><strong>Employee ID:</strong> {{ aud.empId }}</p>
+                    <p><strong>Department:</strong> {{ aud.dept }}</p>
+                    <p *ngIf="aud.contact">
+                        <strong>Email:</strong>
+                        <a [href]="'mailto:' + aud.contact">{{ aud.contact }}</a>
+                    </p>
+                </div>
+
+                <div class="description">
+                    <h4>Profile Summary</h4>
+                    <p>{{ aud.description }}</p>
+                </div>
+            </ng-template>
+
+            <!-- Footer / Actions -->
+            <ng-template pTemplate="footer">
+                <div class="card-actions">
+                    <button pButton type="button" label="Send Request" icon="pi pi-envelope" class="p-button-outlined"
+                        (click)="onSendRequest(aud?.contact)"></button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</div>

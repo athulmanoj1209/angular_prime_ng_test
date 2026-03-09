@@ -1,9 +1,21 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ImageService {
+    
+    http = inject(HttpClient);
+
+    getTreeData() {
+        return this.http.get("http://localhost:5250/api/Audit/audit-tree");
+    }
+
+    getAuthorById(id: string) {
+        return this.http.get(`http://localhost:5250/api/Audit/get-auditor/${id}`);
+    }
+
     getData() {
         return [
             {
@@ -2394,5 +2406,7 @@ export class ImageService {
     getProductsWithOrders() {
         return Promise.resolve(this.getProductsWithOrdersData());
     }
+
+
 
 }
