@@ -41,8 +41,82 @@
                 <div class="card-actions">
                     <button pButton type="button" label="Send Request" icon="pi pi-envelope" class="p-button-outlined"
                         (click)="onSendRequest(aud?.contact)"></button>
+                    <p-button label="Submit Request" (onClick)="showDialog()"></p-button>
                 </div>
             </ng-template>
         </p-card>
     </div>
 </div>
+
+
+
+<!-- dialog -->
+<p-dialog 
+    header="Submit Service Request"
+    [(visible)]="visible"
+    [modal]="true"
+    [closable]="true"
+    [style]="{ width: '400px', height: '550px' }"
+    [breakpoints]="{ '1199px': '75vw', '575px': '95vw' }"
+    [contentStyle]="{ 'padding': '1.5rem' }"
+    styleClass="request-dialog">
+
+    <!-- MultiSelect -->
+    <div class="field">
+        <label class="dialog-label">Select Services</label>
+        <p-multiselect 
+            [options]="AuditorServices"
+            [(ngModel)]="selectedServices"
+            optionLabel="name"
+            placeholder="Choose Services"
+            [maxSelectedLabels]="3"
+            class="w-full">
+        </p-multiselect>
+    </div>
+
+    <!-- File Upload -->
+    <div class="field upload-section">
+        <label class="dialog-label">Upload Supporting File</label>
+
+        <div class="upload-row">
+            <p-fileupload
+                #fu
+                mode="basic"
+                chooseLabel="Choose File"
+                chooseIcon="pi pi-upload"
+                name="demo[]"
+                url="https://www.primefaces.org/cdn/api/upload.php"
+                accept="image/*"
+                maxFileSize="1000000"
+                (onUpload)="onUpload($event)">
+            </p-fileupload>
+
+            <p-button 
+                label="Upload"
+                icon="pi pi-cloud-upload"
+                (onClick)="fu.upload()"
+                severity="secondary">
+            </p-button>
+        </div>
+    </div>
+
+    <!-- Footer Buttons -->
+    <ng-template pTemplate="footer">
+        <div class="dialog-footer">
+            <p-button 
+                label="Cancel"
+                icon="pi pi-times"
+                severity="secondary"
+                (onClick)="visible=false">
+            </p-button>
+
+            <p-button 
+                label="Submit Request"
+                icon="pi pi-check"
+                severity="success"
+                (onClick)="submitRequest()">
+            </p-button>
+        </div>
+    </ng-template>
+
+</p-dialog>
