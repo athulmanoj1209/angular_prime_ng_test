@@ -34,15 +34,16 @@ export class ExpensiveComponent implements OnInit, OnDestroy {
     // this.photoService.getImages().then((images: any) => this.images.set(images));
     // this.files = await this.photoService.getFilesystem();
     // this.files = this.toPrimeTree(await this.photoService.getFilesystem(), '0');
-    this.photoService.getTreeData()
+    this.photoService.getTreeData(2)
       .pipe(takeUntil(this.componentDestroyed$),  // Subscribe to getData(), but automatically unsubscribe when componentDestroyed$ emits.
         catchError((error: Error) => {
         console.log("error in admin register", error.message);
         throw error;
       }))
       .subscribe((response: any) => {
-        console.log("tree response", response.data);
-        this.files = this.toPrimeTree(response?.data, '0');
+        console.log("tree response", response?.primeData);
+        this.files = response?.primeData;
+        // this.toPrimeTree(response?.data, '0');
         this.cdr.detectChanges();
       });
 

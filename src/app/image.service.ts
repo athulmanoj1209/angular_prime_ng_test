@@ -8,8 +8,8 @@ export class ImageService {
     
     http = inject(HttpClient);
 
-    getTreeData() {
-        return this.http.get("http://localhost:5250/api/Audit/audit-tree");
+    getTreeData(id: number) {
+        return this.http.get(`http://localhost:5250/api/Audit/audit-tree/${id}`);
     }
 
     getAuthorById(id: string) {

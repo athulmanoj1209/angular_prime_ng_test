@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { RenderMode } from '@angular/ssr';
+
 
 export const routes: Routes = [
     {
