@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { RenderMode } from '@angular/ssr';
 
 export const routes: Routes = [
     {
@@ -11,6 +12,7 @@ export const routes: Routes = [
     },
     {
         path: 'auditor-details/:id',
-        loadComponent: () => import('./auditorprofile/auditorprofile').then(com => com.Auditorprofile)
+        loadComponent: () => import('./auditorprofile/auditorprofile').then(com => com.Auditorprofile),
+        // renderMode: RenderMode.Server,
     }
 ];
